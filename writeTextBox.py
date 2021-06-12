@@ -5,30 +5,45 @@ import covid
 import WebScrape
 import destination
 
-RED=(255,0,0)   
-GREEN=(0,255,0)
-BLUE=(0,0,255)
-BLACK=(0,0,0)
-WHITE=(255,255,255)
+
 
 #global font variable
 font.init()
-title_font = font.SysFont('Comic Sans MS', 60)
-body_font = font.SysFont('Comic Sans MS', 30)
+title_font = font.SysFont('Calibri', 80)
+body_font = font.SysFont('Calibri', 50)
 
-'''
-params:
-country -> string with name
-length, width -> dimensions of text box
+testbodysurface = body_font.render("Test", False, (0,0,0))
 
+'''Images'''
+icon_covid = image.load("Images/CovidIcon.png")
+icon_country = image.load("Images/CountryIcon.png")
+icon_tourist = image.load("Images/TourtistIcon.png")
 
-returns a transparent surface with the text information centered on it
-later will need to be blitted to the surface
+#resize images to needs
+icon_covid = transform.scale(icon_covid, (testbodysurface.get_height(), testbodysurface.get_height()))
+icon_country = transform.scale(icon_country, (testbodysurface.get_height(), testbodysurface.get_height()))
+icon_tourist = transform.scale(icon_tourist, (testbodysurface.get_height(), testbodysurface.get_height()))
 
-
-'''
 
 #thanks stackoverflow for this code (pygame suks)
+'''
+params:
+- surface to blit on
+- string
+- (x,y) tuple
+- font object
+- color optional
+
+
+blits text and accounts for line wrapping on the surface
+
+returns the y value of the lowest text that is reached
+
+'''
+
+
+
+
 def blit_text(surface, text, pos, font, color=Color('black')):
     words = [word.split(' ') for word in text.splitlines()]  # 2D array where each row is a list of words.
     space = font.size(' ')[0]  # The width of a space.
@@ -49,7 +64,17 @@ def blit_text(surface, text, pos, font, color=Color('black')):
     return y  #bottom of lowest text written
 
         
+'''
+params:
+country -> string with name
+width, height -> dimensions of text box
 
+
+returns a transparent surface with the text information centered on it
+later will need to be blitted to the surface
+
+
+'''
 def textBox(country, width, height):
 
     COL = (10, 3, 74)
@@ -61,25 +86,29 @@ def textBox(country, width, height):
 
     boxSurface = Surface((width,height), SRCALPHA)
 
-    #tester to see border 
-    boxSurface.fill((255,255,0))
+    
     
     #title of country
     countryname = covidinfo['country']
     titlesurface = title_font.render(covidinfo['country'],False, COL)
-    title_pos_center = (width//2 - titlesurface.get_width()// 2,int(height//30))
+    title_pos_center = (width//60,int(height//25))#title_pos_center = (width//3 - titlesurface.get_width()// 2,int(height//30))
     boxSurface.blit(titlesurface, title_pos_center)
 
 
     #track the current position of text
-    curwidth = width//30
+    curwidth = 4*width//30
     curheight = height//6+10
     
     #tourist entry
+
+    boxSurface.blit(icon_tourist, (curwidth - icon_tourist.get_width() - 5, curheight))
     offset = blit_text(boxSurface, travelString, (curwidth, curheight), body_font, COL)
     curheight = offset + 15
 
     #covid rating
+
+    boxSurface.blit(icon_covid, (curwidth - icon_tourist.get_width() - 5, curheight))
+    
     rating = covidinfo['rating']
     cases = covidinfo['cases']
 
@@ -88,6 +117,8 @@ def textBox(country, width, height):
     curheight = offset + 15
 
     #destinations
+
+    boxSurface.blit(icon_country, (curwidth - icon_tourist.get_width() - 5, curheight))
     offset = blit_text(boxSurface,"Destinations in {}".format(covidinfo['country']), (curwidth, curheight), body_font, COL)
     curheight = offset
     for i in range(len(destinationlist)):
@@ -105,7 +136,7 @@ def textBox(country, width, height):
 
     
     
-
+#tester code
 
 if __name__ == "__main__":
     
@@ -129,7 +160,7 @@ if __name__ == "__main__":
 
         
         
-        screen.fill((0,0,0))
+        screen.fill((200,200,200))
         screen.blit(wow, (100,100))
         
         
