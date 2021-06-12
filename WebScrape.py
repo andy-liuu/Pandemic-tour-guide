@@ -1,6 +1,13 @@
 import requests
 
+'''
+params:
+name of country
 
+
+returns string with brief descripsion about tourist entry
+
+'''
 
 
 def getTravelRestrictions(name):
