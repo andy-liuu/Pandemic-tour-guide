@@ -1,4 +1,5 @@
 from pygame import *
+import writeTextBox
 size=width,height = 1280,720
 screen=display.set_mode(size)
 RED=(255,0,0)   
@@ -19,7 +20,12 @@ loadingPages = []
 for i in range(4):
     loadingPages.append(image.load("Images/Loading"+str(i+1)+".png").convert_alpha())
 
+infoOverlay = image.load("Images/InfoOverlay.png").convert_alpha()
+infoOverlaySelected = image.load("Images/InfoOverlaySelected.png").convert_alpha()
+infoX = 1280
+
 inMenu = True
+clickable = True
 
 loading = False
 loadingCount = 0
@@ -27,7 +33,11 @@ loadingBar = 0
 
 launching = False
 
+showingInfo = False
+infoBox = None
+
 buttonRect = Rect(467, 495, 346, 134)
+closeButtonRect = Rect(228, 0, 123, 73)
 
 running=True
 while running:
@@ -36,8 +46,25 @@ while running:
             running=False
     mpos=mouse.get_pos()
     mb=mouse.get_pressed()
-
-    if launching:
+    
+    if showingInfo:
+        screen.blit(wMap, (0, 0))
+        if closeButtonRect.collidepoint(mpos):
+            screen.blit(infoOverlaySelected, (infoX, 0))
+        else:
+            screen.blit(infoOverlay, (infoX, 0))
+        screen.blit(infoBox, (infoX+360, 0))
+        if infoX>0 and not clickable:
+            infoX-=10
+        if infoX<=0:
+            if closeButtonRect.collidepoint(mpos) and mb[0] == 1:
+                    clickable = True
+        if clickable:
+            infoX += 10
+            if infoX>=1280:
+                showingInfo = False
+                    
+    elif launching:
         
         screen.blit(wMap, (0, 0))
         for country, col in countryDict.items():
@@ -45,7 +72,9 @@ while running:
                 screen.blit(globals()[country+"Map"], (0, 0))
                 if clickable and mb[0] == 1:
                     clickable = False
-                    print(country)
+                    showingInfo = True
+                    infoBox = writeTextBox.textBox(country.lower(), 920, 720)
+                    
 
     elif loading:
         

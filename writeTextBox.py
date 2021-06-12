@@ -33,12 +33,8 @@ params:
 - (x,y) tuple
 - font object
 - color optional
-
-
 blits text and accounts for line wrapping on the surface
-
 returns the y value of the lowest text that is reached
-
 '''
 
 
@@ -68,12 +64,8 @@ def blit_text(surface, text, pos, font, color=Color('black')):
 params:
 country -> string with name
 width, height -> dimensions of text box
-
-
 returns a transparent surface with the text information centered on it
 later will need to be blitted to the surface
-
-
 '''
 def textBox(country, width, height):
 
