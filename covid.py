@@ -1,4 +1,4 @@
-import covidpy as cp
+from covidpy import CountryData
 
 import countryinfo as ci
 
@@ -31,9 +31,9 @@ def getCovidStats(name):
     'Total_Tests': 5677222
 }
     '''
-
-
-    country = cp.CountryData(name)
+    name = name.lower().strip()
+    
+    country = CountryData(name)
     population = ci.CountryInfo(name).population()
 
     percentage = country["Active_Cases"]/population
