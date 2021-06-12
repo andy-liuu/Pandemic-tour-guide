@@ -4,6 +4,7 @@ import re
 def destinations(country):
     result = requests.get("http://www.geonames.org/search.html?q="+country+"&country=")
     #print(result.status_code)
+    dests=[]
 
     src = result.content
     lines = src.splitlines()
@@ -16,8 +17,9 @@ def destinations(country):
             found = re.search('html\">[^<](.*?)</a>', test).group(0)
             print()
             found = found[6:len(found)-4]
-            print(found)
+            dests.append(found)
+        
         except:
             print("fail")    
-
+    print(dests)
 #destinations("canada") 
