@@ -5,8 +5,8 @@ import countryinfo as ci
 import pprint
 
 
-countries = cp.ListCountries()
-world = cp.WorldData()
+#countries = cp.ListCountries()
+#world = cp.WorldData()
 
 
 '''
@@ -58,3 +58,5 @@ def getCovidStats(name):
 if __name__ == "__main__":
     
     pprint.pprint(getCovidStats("Canada"))
+
+    pprint.pprint(countries)
