@@ -59,4 +59,4 @@ if __name__ == "__main__":
     
     pprint.pprint(getCovidStats("Canada"))
 
-    pprint.pprint(countries)
+    #pprint.pprint(countries)
