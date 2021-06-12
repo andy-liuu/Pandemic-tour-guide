@@ -13,5 +13,4 @@ def destinations(key):
            'Brazil':["Christ the Redeemer", "Sugarloaf Mountain","Museum of Art of Sao Paulo Assis Chateaubriand", "Copacabana Beach"],
            'Saudi Arabia':["Masjid al-Haram", "Abraj Al-Bait Towers", "Center Point", "Masmak Fortress"],
            'Ethiopia':["Simien Mountains National Park", "Rock-Hewn Churches, Lalibela", "Blue Nile Falls", "Bale Mountains National Park"]}
-
     print("Tourist Attractions in", key, ":", country[key])
