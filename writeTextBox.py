@@ -77,7 +77,7 @@ later will need to be blitted to the surface
 '''
 def textBox(country, width, height):
 
-    COL = (10, 3, 74)
+    COL = (0,0,0)
     
     covidinfo = covid.getCovidStats(country)
     travelString = WebScrape.getTravelRestrictions(country)
