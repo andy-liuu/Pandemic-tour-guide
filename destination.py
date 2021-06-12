@@ -1,25 +1,17 @@
-import requests
-import re
+def destinations(key):
+    country = {'Canada':["CN Tower","Parliament Hill","Banff National Park","Niagara Falls"], 
+           'India':["Mumbai", "Jaipur", "Taj Mahal", "Ranthambore National Park"],
+           'China':["Great Wall", "Forbidden City", "Tiananmen Square", "Temple of Heaven"],
+           'USA':["Grand Canyon", "Yosemite National Park", "Lake Tahoe", "Golden Gate Bridge"],
+           'Russia':["State Hermitage Museum", "St. Basil's Cathedral", "The Moscow Kremlin", "Red Square"],
+           'Spain':["La Sagrada Familia", "Park Guell", "Alhambra", "Museo Nacional de Prado"],
+           'Thailand':["The Grand Palace", "Wat Arun Ratchawararam Ratchaworamahawihan","Railay Beach","Chatuchak Weekend Market"],
+           'Australia':["Great Barrier Reef", "Sydney Opera House", "Uluru", "Kakadu National Park"],
+           'Egypt':["The Egyptian Museum", "Valley of the Kings", "Karmak", "Great Sphinx of Giza"],
+           'South Africa':["Kruger National Park", "Maclear's Beacon", "KirstenBosch National Botanical Garden", "Boulder's Beach"],
+           'Mexico':["Chichen Itza", "Tulum Archaeological Zone", "Frida Kahlo Museum", "Xcaret Park"],
+           'Brazil':["Christ the Redeemer", "Sugarloaf Mountain","Museum of Art of Sao Paulo Assis Chateaubriand", "Copacabana Beach"],
+           'Saudi Arabia':["Masjid al-Haram", "Abraj Al-Bait Towers", "Center Point", "Masmak Fortress"],
+           'Ethiopia':["Simien Mountains National Park", "Rock-Hewn Churches, Lalibela", "Blue Nile Falls", "Bale Mountains National Park"]}
 
-def destinations(country):
-    result = requests.get("http://www.geonames.org/search.html?q="+country+"&country=")
-    #print(result.status_code)
-    dests=[]
-
-    src = result.content
-    lines = src.splitlines()
-    for i in range (53,58):
-        lines[i].split()
-        #print(lines[54])
-
-        test = str(lines[i])
-        try:
-            found = re.search('html\">[^<](.*?)</a>', test).group(0)
-            print()
-            found = found[6:len(found)-4]
-            dests.append(found)
-        
-        except:
-            print("fail")    
-    print(dests)
-#destinations("canada") 
+    print("Tourist Attractions in", key, ":", country[key])
