@@ -62,7 +62,7 @@ def textBox(country, width, height):
     boxSurface = Surface((width,height), SRCALPHA)
 
     #tester to see border 
-    boxSurface.fill((255,255,0))
+    #boxSurface.fill((255,255,0))
     
     #title of country
     countryname = covidinfo['country']
@@ -129,7 +129,7 @@ if __name__ == "__main__":
 
         
         
-        screen.fill((0,0,0))
+        screen.fill((200,200,200))
         screen.blit(wow, (100,100))
         
         
