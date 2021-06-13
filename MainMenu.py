@@ -13,11 +13,23 @@ WHITE=(255,255,255)
 wMap = image.load("Images/WorldMap.png").convert_alpha()
 CanadaMap = image.load("Images/CanadaMap.png").convert_alpha()
 IndiaMap = image.load("Images/IndiaMap.png").convert_alpha()
+UsaMap = image.load("Images/UsaMap.png").convert_alpha()
+BrazilMap = image.load("Images/BrazilMap.png").convert_alpha()
+SpainMap = image.load("Images/SpainMap.png").convert_alpha()
+SouthAfricaMap = image.load("Images/South AfricaMap.png").convert_alpha()
+EthiopiaMap = image.load("Images/EthiopiaMap.png").convert_alpha()
+EgyptMap = image.load("Images/EgyptMap.png").convert_alpha()
+RussiaMap = image.load("Images/RussiaMap.png").convert_alpha()
+ThailandMap = image.load("Images/ThailandMap.png").convert_alpha()
+ChinaMap = image.load("Images/ChinaMap.png").convert_alpha()
+AustraliaMap = image.load("Images/AustraliaMap.png").convert_alpha()
+AlgeriaMap = image.load("Images/AlgeriaMap.png").convert_alpha()
+NigeriaMap = image.load("Images/NigeriaMap.png").convert_alpha()
 
 #each country gets an rgb value
 countryDict = {"Canada" : (255, 0, 0),
                "India" : (255, 138, 0),
-               "USA": (52, 100, 235),
+               "Usa": (52, 100, 235),
                "Mexico": (13, 107, 21),
                "Brazil": (10,209,27),
                "Spain": (235, 231, 30),
@@ -94,9 +106,7 @@ while running:
         screen.blit(wMap, (0, 0))
         for country, col in countryDict.items():
             if screen.get_at(mpos) == col:
-
-                newcountrystring = country.strip().replace(" ", "_")
-                screen.blit(globals()[newcountrystring+"Map"], (0, 0))
+                screen.blit(globals()[country+"Map"], (0, 0))
                 if clickable and mb[0] == 1:
                     clickable = False
                     showingInfo = True
