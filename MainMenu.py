@@ -8,11 +8,32 @@ BLUE=(0,0,255)
 BLACK=(0,0,0)
 WHITE=(255,255,255)
 
+
+#global variables accessed by globals()
 wMap = image.load("Images/WorldMap.png").convert_alpha()
 CanadaMap = image.load("Images/CanadaMap.png").convert_alpha()
 IndiaMap = image.load("Images/IndiaMap.png").convert_alpha()
-countryDict = {"Canada" : (255, 0, 0), "India" : (255, 138, 0)}
 
+#each country gets an rgb value
+countryDict = {"Canada" : (255, 0, 0),
+               "India" : (255, 138, 0),
+               "USA": (52, 100, 235),
+               "Mexico": (13, 107, 21),
+               "Brazil": (10,209,27),
+               "Spain": (235, 231, 30),
+               "South Africa": (181,5,38),
+               "Ethiopia": (27, 128, 135),
+               "Egypt": (225, 227, 209),
+               "Saudi Arabia": (3,37,84),
+               "Russia": (134, 17,17),
+               "Thailand": (88,3,110),
+               "China": (189, 30, 57),
+               "Australia": (9, 66, 181),
+               "Algeria": (60,255,0),
+               "Nigeria": (204, 0, 255)}
+
+
+#load image assets
 menu = image.load("Images/Frontpage.png").convert_alpha()
 selectedMenu = image.load("Images/Frontpage2.png").convert_alpha()
 loadingPage = image.load("Images/LoadingPage.png").convert_alpha()
@@ -22,6 +43,8 @@ for i in range(4):
 
 infoOverlay = image.load("Images/InfoOverlay.png").convert_alpha()
 infoOverlaySelected = image.load("Images/InfoOverlaySelected.png").convert_alpha()
+
+
 infoX = 1280
 
 inMenu = True
@@ -46,7 +69,8 @@ while running:
             running=False
     mpos=mouse.get_pos()
     mb=mouse.get_pressed()
-    
+
+    #when the infobox for a country is displayed + animation
     if showingInfo:
         screen.blit(wMap, (0, 0))
         if closeButtonRect.collidepoint(mpos):
@@ -63,7 +87,8 @@ while running:
             infoX += 10
             if infoX>=1280:
                 showingInfo = False
-                    
+
+    #regular map usage                
     elif launching:
         
         screen.blit(wMap, (0, 0))
@@ -75,7 +100,7 @@ while running:
                     showingInfo = True
                     infoBox = writeTextBox.textBox(country.lower(), 920, 720)
                     
-
+    #"loading" screen
     elif loading:
         
         screen.blit(loadingPage, (0, 0))
@@ -90,7 +115,7 @@ while running:
         
         
         
-
+    
     elif inMenu:
         
         screen.blit(menu, (0, 0))
