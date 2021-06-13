@@ -12,7 +12,7 @@ Small python app that gives travel information during the pandemic.
 ## Gallery
 
 ### Title Screen
-![Image of Title Screen](https://github.com/andy-liuu/Pandemic-tour-guide/blob/main/Gallery/infocard.png)
+![Image of Title Screen](https://github.com/andy-liuu/Pandemic-tour-guide/blob/main/Gallery/menuscreen.png)
 
 ### World Map
 ![Image of World Map](https://github.com/andy-liuu/Pandemic-tour-guide/blob/main/Gallery/worldview.png)
