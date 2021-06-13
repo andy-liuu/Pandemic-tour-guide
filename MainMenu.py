@@ -94,7 +94,9 @@ while running:
         screen.blit(wMap, (0, 0))
         for country, col in countryDict.items():
             if screen.get_at(mpos) == col:
-                screen.blit(globals()[country+"Map"], (0, 0))
+
+                newcountrystring = country.strip().replace(" ", "_")
+                screen.blit(globals()[newcountrystring+"Map"], (0, 0))
                 if clickable and mb[0] == 1:
                     clickable = False
                     showingInfo = True
