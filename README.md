@@ -7,6 +7,9 @@ On the command prompt, type `pip install pygame`, `pip install covidpy` and `pip
 
 ## Gallery
 
+### QUARANTRAVEL
+![Image of App Banner](https://github.com/andy-liuu/Pandemic-tour-guide/blob/main/Gallery/ProductBanner.png)
+
 ### Title Screen
 ![Image of Title Screen](https://github.com/andy-liuu/Pandemic-tour-guide/blob/main/Gallery/menuscreen.png)
 
