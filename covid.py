@@ -36,14 +36,19 @@ def getCovidStats(name):
     country = CountryData(name)
     population = ci.CountryInfo(name).population()
 
-    percentage = country["Active_Cases"]/population
+
+    #method for ranking countries
+    percentage = country["Active_Cases"]/(country['Total_Cases'] - country['Total_Recovered'])
+
+    #print(percentage)
+                                                 
 
     #print(percentage)
     
     rating = 0
 
-    if percentage < 0.02:
-        rating = round(10 * (1-(percentage / 0.02)), 1)
+    if percentage < 1:
+        rating = round(10 * (1-percentage), 1)
 
     #print(rating)
 
@@ -56,7 +61,25 @@ def getCovidStats(name):
 
 #tester code
 if __name__ == "__main__":
+
+    countryDict = {"Canada" : (255, 0, 0),
+               "India" : (255, 138, 0),
+               "USA": (52, 100, 235),
+               "Mexico": (13, 107, 21),
+               "Brazil": (10,209,27),
+               "Spain": (235, 231, 30),
+               "South Africa": (181,5,38),
+               "Ethiopia": (27, 128, 135),
+               "Egypt": (225, 227, 209),
+               "Saudi Arabia": (3,37,84),
+               "Russia": (134, 17,17),
+               "Thailand": (88,3,110),
+               "China": (189, 30, 57),
+               "Australia": (9, 66, 181),
+               "Algeria": (60,255,0),
+               "Nigeria": (204, 0, 255)}
     
-    pprint.pprint(getCovidStats("Canada"))
+    for key in countryDict.keys():
+        pprint.pprint(getCovidStats(key))
 
     #pprint.pprint(countries)
