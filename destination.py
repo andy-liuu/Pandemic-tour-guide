@@ -15,7 +15,9 @@ def destinations(key):
            'MEXICO':["Chichen Itza", "Tulum Archaeological Zone", "Frida Kahlo Museum", "Xcaret Park"],
            'BRAZIL':["Christ the Redeemer", "Sugarloaf Mountain","Museum of Art of Sao Paulo Assis Chateaubriand", "Copacabana Beach"],
            'SAUDI ARABIA':["Masjid al-Haram", "Abraj Al-Bait Towers", "Center Point", "Masmak Fortress"],
-           'ETHIOPIA':["Simien Mountains National Park", "Rock-Hewn Churches, Lalibela", "Blue Nile Falls", "Bale Mountains National Park"]}
+           'ETHIOPIA':["Simien Mountains National Park", "Rock-Hewn Churches, Lalibela", "Blue Nile Falls", "Bale Mountains National Park"],
+            'ALGERIA': ["Monument of the Martyr","Basilique Notre Dame d'Afrique", "Fort Santa Cruz"],
+            'NIGERIA':["Freedom Park Lagos","Kajuru Castle","Abuja National Mosque", "Gurara Falls"]}
     return country[key]
         
 
