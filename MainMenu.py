@@ -41,7 +41,7 @@ countryDict = {"Canada" : (255, 0, 0),
                "Russia": (134, 17,17),
                "Thailand": (88,3,10),
                "China": (189, 30, 57),
-               "Australia": (9, 66, 181),
+               "Australia": (99, 66, 181),
                "Algeria": (60,255,0),
                "Nigeria": (204, 0, 255)}
 
