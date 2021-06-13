@@ -2,7 +2,7 @@
 Small python app that gives travel information during the pandemic.
 
 
-dependencies:
+##dependencies
 <ul>
   <li>pygame</li>
   <li>covidpy</li>
