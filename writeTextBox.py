@@ -131,8 +131,45 @@ def textBox(country, width, height):
 #tester code
 
 if __name__ == "__main__":
+
+    '''
+    countryDict = {"Canada" : (255, 0, 0),
+               "India" : (255, 138, 0),
+               "USA": (52, 100, 235),
+               "Mexico": (13, 107, 21),
+               "Brazil": (10,209,27),
+               "Spain": (235, 231, 30),
+               "South Africa": (181,5,38),
+               "Ethiopia": (27, 128, 135),
+               "Egypt": (225, 227, 209),
+               "Saudi Arabia": (3,37,84),
+               "Russia": (134, 17,17),
+               "Thailand": (88,3,110),
+               "China": (189, 30, 57),
+               "Australia": (9, 66, 181),
+               "Algeria": (60,255,0),
+               "Nigeria": (204, 0, 255)}
+    '''
+
+    countryDict = {"Canada" : (255, 0, 0),
+               "India" : (255, 138, 0),
+               "USA": (52, 100, 235),
+               "Mexico": (13, 107, 21),
+               "Brazil": (10,209,27),
+               "Spain": (235, 231, 30),
+               "South Africa": (181,5,38),
+               "Ethiopia": (27, 128, 135),
+               "Egypt": (225, 227, 209),
+               "Saudi Arabia": (3,37,84),
+               "Russia": (134, 17,17),
+               "Thailand": (88,3,110),
+               "China": (189, 30, 57),
+               "Australia": (9, 66, 181)}
+
+    alltextboxes = []
     
-    wow = textBox("china",800, 600)
+    for key in countryDict.keys():
+        alltextboxes.append(textBox(key, 800,600))
 
     size=width,height = 1280,720
     screen=display.set_mode(size)
@@ -143,18 +180,26 @@ if __name__ == "__main__":
     
     clickable = True
     running=True
+
+    count = 0
+    delay = 200
+    
     while running:
         for evt in event.get():
             if evt.type==QUIT:
                 running=False
+
+        #print(count)
         mpos=mouse.get_pos()
         mb=mouse.get_pressed()
 
         
         
         screen.fill((200,200,200))
-        screen.blit(wow, (100,100))
+        screen.blit(alltextboxes[count//delay], (100,100))
         
+        count += 1
+        count = 0 if count+2 > delay * len(countryDict.keys()) else count
         
         display.flip() 
 
