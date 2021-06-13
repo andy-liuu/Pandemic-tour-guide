@@ -37,7 +37,7 @@ countryDict = {"Canada" : (255, 0, 0),
                "Spain": (235, 231, 30),
                "South Africa": (181,5,38),
                "Ethiopia": (27, 128, 135),
-               "Egypt": (225, 227, 209),
+               "Egypt": (255, 227, 209),
                "Saudi Arabia": (3,87,10),
                "Russia": (134, 17,17),
                "Thailand": (88,3,10),
@@ -84,6 +84,8 @@ while running:
     mpos=mouse.get_pos()
     mb=mouse.get_pressed()
 
+    #screen.fill((0,0,0))
+
     #when the infobox for a country is displayed + animation
     if showingInfo:
         screen.blit(wMap, (0, 0))
@@ -105,7 +107,7 @@ while running:
     #regular map usage                
     elif launching:
 
-        print(screen.get_at(mpos))
+        
         
         screen.blit(wMap, (0, 0))
         for country, col in countryDict.items():
@@ -116,7 +118,7 @@ while running:
                     clickable = False
                     showingInfo = True
                     infoBox = writeTextBox.textBox(country.lower(), 920, 720)
-                    
+        
     #"loading" screen
     elif loading:
         
