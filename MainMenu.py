@@ -26,6 +26,7 @@ AustraliaMap = image.load("Images/AustraliaMap.png").convert_alpha()
 AlgeriaMap = image.load("Images/AlgeriaMap.png").convert_alpha()
 NigeriaMap = image.load("Images/NigeriaMap.png").convert_alpha()
 MexicoMap = image.load("Images/MexicoMap.png").convert_alpha()
+SaudiArabiaMap = image.load("Images/Saudi ArabiaMap.png").convert_alpha()
 
 #each country gets an rgb value
 countryDict = {"Canada" : (255, 0, 0),
@@ -103,6 +104,8 @@ while running:
 
     #regular map usage                
     elif launching:
+
+        print(screen.get_at(mpos))
         
         screen.blit(wMap, (0, 0))
         for country, col in countryDict.items():
